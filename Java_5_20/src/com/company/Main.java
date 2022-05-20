@@ -1,15 +1,37 @@
 package com.company;
 
+import java.util.Scanner;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.log;
 
 public class Main {
 
     public static void main(String[] args) {
-
-        System.out.println(100);
-
+        Scanner sc = new Scanner(System.in);
+        short s = sc.nextShort();
+        switch(s)
+        {
+            case 1:
+                System.out.println(s);
+                break;
+            case 2:
+                System.out.println(s);
+                break;
+            default :
+                System.out.println("shuchu");
+                break;
+        }
     }
+
+
+//    public static void main(String[] args) {
+//        int a = 1;
+//        System.out.println(100);
+//        System.out.println(Character.isUpperCase('2'));
+//
+//    }
+
 }
 /*
 //        System.out.println(Math.random());
@@ -46,7 +68,7 @@ public class Main {
 //
 ////        char c = test('x');
 //        System.out.println(a);
-    //}
+//}
 
 
 
@@ -58,11 +80,11 @@ public class Main {
     }*/
 
 /*
-    *
-     * 该方法是用来求和，两个参数都是int类型
-     * @param number_a 第一个加数
-     * @param number_b 第二个加数
-     * @return 返回一个int类型的值；*/
+ *
+ * 该方法是用来求和，两个参数都是int类型
+ * @param number_a 第一个加数
+ * @param number_b 第二个加数
+ * @return 返回一个int类型的值；*/
     /*public static int sum(int number_a, int number_b) {
         return number_a + number_b;
     }*/
