@@ -4,7 +4,87 @@ import java.util.Arrays;
 
 public class Main {
 
-//    给定一个整型数组, 实现冒泡排序(升序排序)
+    public static String toString(int[] arary) {
+        String ch = "[";
+        for (int i = 0; i < arary.length; i++) {
+            if (i < arary.length - 1) {
+                ch = ch + arary[i] + "," + " ";
+            } else {
+                ch = ch + arary[i];
+            }
+        }
+        ch += "]";
+        return ch;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5};
+
+        System.out.println(toString(array));
+    }
+}
+
+/*    public static int[] copyOf(int[] array, int length) {
+        int[] copy = new int[length];
+
+        for (int i = 0; i < length; i++) {
+            copy[i] = array[i];
+        }
+        return copy;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {2, 4, 3, 32, 2, 5, 67, 45};
+
+        int[] copy = copyOf(array, array.length);
+        System.out.println(Arrays.toString(copy));
+    }
+
+}*/
+/*
+    public static int binarySearch(int[] array, int target) {
+        int left = 0;
+        int right = array.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (array[mid] == target) {
+                return mid;
+            } else if (array[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int target = 7;
+
+        int subscript = binarySearch(array, target);
+        System.out.println("下标subscript = " + subscript);
+
+    }
+}*/
+/*
+    public static void main(String[] args) {
+
+        int[] array1 = {1, 3, 2, 4, 5};
+        int[]array2 = Arrays.copyOf(array1, array1.length);
+        Arrays.sort(array2);
+        if (Arrays.equals(array1, array2)) {
+            System.out.println("该数组是有序递增的");
+        } else {
+            System.out.println("该数组不是有序递增的");
+        }
+
+    }
+}*/
+
+/*//    给定一个整型数组, 实现冒泡排序(升序排序)
 
     public static int[] bubbleserch(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
@@ -31,7 +111,7 @@ public class Main {
         System.out.println(Arrays.toString(bubbleserch(array)));
     }
 
-}
+}*/
 
 /*    public static int[] search(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
