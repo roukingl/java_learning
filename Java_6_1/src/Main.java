@@ -9,7 +9,7 @@ public class Main extends Base{
 
     public Main (String s) {
         super("sdf");
-        System.out.println("f");
+        System.out.println("fhh");
         System.out.print("D");
     }
 
