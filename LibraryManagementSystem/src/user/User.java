@@ -11,9 +11,9 @@ public abstract class User {
         this.userName = userName;
     }
 
-    public abstract void menu();
+    public abstract int menu();
 
-    public void doperation(int choose, BookList bookList) {
+    public void doPeration(int choose, BookList bookList) {
         this.iOperations[choose].work(bookList);
     }
 
