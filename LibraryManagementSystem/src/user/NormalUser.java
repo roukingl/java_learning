@@ -12,6 +12,7 @@ public class NormalUser extends User {
                 new Exitperation(),
                 new BorrowOperation(),
                 new ReturnOperation(),
+                new Findperation(),
                 new Displayperation()
         };
     }
@@ -20,7 +21,8 @@ public class NormalUser extends User {
     public int menu() {
         System.out.println("1.借阅图书");
         System.out.println("2.归还图书");
-        System.out.println("3.显示所有图书");
+        System.out.println("3.查找图书");
+        System.out.println("4.显示所有图书");
         System.out.println("0.退出系统");
 
         Scanner scanner = new Scanner(System.in);

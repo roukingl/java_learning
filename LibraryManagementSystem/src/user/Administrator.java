@@ -13,6 +13,7 @@ public class Administrator extends User{
                 new Addperation(),
                 new Delperation(),
                 new Reviseperation(),
+                new Findperation(),
                 new Displayperation()
         };
     }
@@ -22,7 +23,8 @@ public class Administrator extends User{
         System.out.println("1.新增图书");
         System.out.println("2.删除图书");
         System.out.println("3.修改图书");
-        System.out.println("4.显示所有图书");
+        System.out.println("4.查找图书");
+        System.out.println("5.显示所有图书");
         System.out.println("0.退出系统");
         System.out.println("请输入您的操作");
 
