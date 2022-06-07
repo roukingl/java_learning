@@ -1,11 +1,19 @@
 package user;
 
+import operation.*;
+
 import java.util.Scanner;
 
 public class NormalUser extends User {
 
     public NormalUser(String userName) {
         super(userName);
+        this.iOperations = new IOperation[] {
+                new Exitperation(),
+                new BorrowOperation(),
+                new ReturnOperation(),
+                new Displayperation()
+        };
     }
 
     @Override
