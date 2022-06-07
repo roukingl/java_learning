@@ -17,6 +17,10 @@ public class Book {
     // 书的借出状态
     private boolean bookState;
 
+    public Book() {
+
+    }
+
     public Book(String bookName, String bookAuthor, String bookType, int bookPrice) {
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
@@ -66,11 +70,11 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "bookName='" + bookName + '\'' +
-                ", bookAuthor='" + bookAuthor + '\'' +
-                ", bookType='" + bookType + '\'' +
-                ", bookPrice=" + bookPrice +
+        return "{" +
+                "书名：'" + bookName + '\'' +
+                ", 作者：'" + bookAuthor + '\'' +
+                ", 类型：'" + bookType + '\'' +
+                ", 价格：=" + bookPrice +
                 ", " + ((bookState ? "已借出" : "未借出")) +
                 '}';
     }

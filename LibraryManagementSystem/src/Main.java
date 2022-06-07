@@ -7,10 +7,10 @@ public class Main {
 
     public static User login() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("请输入你的名字: ");
+        System.out.print("请输入你的名字: ");
         String userName = scanner.nextLine();
 
-        System.out.println("Hello" + userName + "请输入你的身份：》1.管理员 》0.普通用户");
+        System.out.println("Hello " + userName + " 请输入你的身份：》1.管理员 》0.普通用户");
         int identityChoice = scanner.nextInt();
         if(identityChoice == 1) {
             return new Administrator(userName);
