@@ -13,9 +13,11 @@ public class Delperation implements IOperation {
 
         for (int i = 0; i < bookList.getUserBookCount(); i++) {
             if(bookName.equals(bookList.getBooks(i).getBookName())) {
-                for (int j = i; j < bookList.getUserBookCount(); j++) {
+                for (int j = i; j < bookList.getUserBookCount() - 1; j++) {
                     bookList.setBooks(j, bookList.getBooks(j + 1));
                 }
+                bookList.setBooks(bookList.getUserBookCount() - 1, null);
+                bookList.setUserBookCount(bookList.getUserBookCount() - 1);
                 return;
             }
         }
