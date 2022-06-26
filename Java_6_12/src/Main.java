@@ -23,7 +23,7 @@ public class Main {
 
         Demo<Integer> test = new Demo();
 
-
+        System.out.println("hid");
 
         Integer[] arr = {12, 32, 45, 67};
         System.out.println(test.findMaxVal(arr));
