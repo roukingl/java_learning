@@ -84,7 +84,7 @@ public class MyLinkedList {
     public void remove(int key) {
         Node cur = this.head;
         while (cur != null) {
-            if(cur.value == key) {
+            if(cur.next.value == key) {
                 cur.next = cur.next.next;
                 return;
             }
@@ -94,12 +94,24 @@ public class MyLinkedList {
 
     //删除所有值为key的节点
     public void removeAllKey(int key) {
-
+        Node ret = head;
+        Node cur = head.next;
+        while (cur != null) {
+            if(cur.value == key) {
+                cur = cur.next;
+            } else {
+                ret.next = cur;
+                cur = cur.next;
+                ret = ret.next;
+            }
+        }
+        if (head.value == key) {
+            head = head.next;
+        }
     }
 
     /**
      * 获取该链表的长度
-     *
      * @return 返回该链表的长度
      */
     public int size() {
@@ -114,7 +126,13 @@ public class MyLinkedList {
 
     //清除链表
     public void clear() {
-
+        Node cur = head;
+        while (cur != null) {
+            Node ret = cur;
+            ret.next = null;
+            cur = cur.next;
+        }
+        head = null;
     }
 
     public MyLinkedList() {
