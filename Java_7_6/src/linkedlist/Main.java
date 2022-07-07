@@ -10,13 +10,14 @@ public class Main {
         myLinkedList.display();
         myLinkedList.addLast(164572);
         myLinkedList.display();
-        myLinkedList.addIndex(1,435);
         myLinkedList.addIndex(1,786);
         myLinkedList.display();
         boolean con = myLinkedList.contains(12);
         System.out.println(con);
         myLinkedList.remove(786);
-        myLinkedList.remove(435);
+        myLinkedList.addLast(12);
+        myLinkedList.addIndex(3, 12);
+        myLinkedList.display();
         myLinkedList.removeAllKey(12);
         myLinkedList.display();
         myLinkedList.clear();
