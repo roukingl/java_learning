@@ -180,5 +180,94 @@ public class Main {
         return backHead;
     }*/
 
+    // 链表的回文结构
+    /*
+        public boolean chkPalindrome(ListNode head) {
 
+        ListNode forward = head;
+        ListNode back = head;
+        while(forward != null && forward.next != null) {
+            forward = forward.next.next;
+            back = back.next;
+        }
+
+        // back是中心节点 以back为头结点翻转
+        ListNode cur = back.next;
+        back.next = null;
+
+        while(cur != null) {
+            ListNode curList = cur.next;
+            cur.next = back;
+            back = cur;
+            cur = curList;
+        }
+        while(back != head && back != null && head != null) {
+            if(back.val != head.val) {
+                return false;
+            }
+            back = back.next;
+            head = head.next;
+        }
+        return true;
+    }
+    */
+
+    // 输入两个链表，找出它们的第一个公共结点
+    /*
+        public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode curA = headA;
+        ListNode curB = headB;
+        int lengthA = listNodeLength(curA);
+        int lengthB = listNodeLength(curB);
+        int listNodeLack = lengthA - lengthB;
+        if(listNodeLack > 0) {
+            while(listNodeLack != 0) {
+                listNodeLack--;
+                curA = curA.next;
+            }
+        } else {
+            while(listNodeLack != 0) {
+                listNodeLack++;
+                curB = curB.next;
+            }
+        }
+        while(curA != curB && curA != null && curB != null) {
+            curA = curA.next;
+            curB = curB.next;
+        }
+        if(curA == null || curB == null) {
+            return null;
+        }
+        return curA;
+    }
+
+    public int listNodeLength(ListNode head) {
+        int length = 0;
+        while(head != null) {
+            length++;
+            head = head.next;
+        }
+        return length;
+    }
+    */
+    // 给定一个链表，判断链表中是否有环
+    /*
+        public boolean hasCycle(ListNode head) {
+        if(head == null || head.next == null) {
+            return false;
+        }
+        // 使用快慢指针，快指针一次两步，慢指针一次一步
+        ListNode fast = head;
+        ListNode slow = head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            // 如果相遇了代表有环，没相遇就美没环
+            if(fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+    */
 }
