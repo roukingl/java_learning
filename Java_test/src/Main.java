@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
     }
-        // 反转一个单链表
+    // 反转一个单链表
             /*
             public ListNode reverseList(ListNode head) {
 
@@ -26,7 +26,7 @@ public class Main {
         }
         */
 
-        // 给定一个带有头结点 head 的非空单链表，返回链表的中间结点。如果有两个中间结点，则返回第二个中间结点
+    // 给定一个带有头结点 head 的非空单链表，返回链表的中间结点。如果有两个中间结点，则返回第二个中间结点
         /*
         public ListNode middleNode(ListNode head) {
         if (head == null || head.next == null) {
@@ -250,8 +250,9 @@ public class Main {
         return length;
     }
     */
+
     // 给定一个链表，判断链表中是否有环
-    /*
+        /*
         public boolean hasCycle(ListNode head) {
         if(head == null || head.next == null) {
             return false;
@@ -268,6 +269,32 @@ public class Main {
             }
         }
         return false;
-    }
-    */
+        }
+        */
+
+        // 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回null
+        /*
+        public ListNode detectCycle(ListNode head) {
+        // 使用快慢指针，快指针一次两步，慢指针一次一步
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            // 如果相遇了代表有环，没相遇就美没环
+            if (fast == slow) {
+                break;
+            }
+        }
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+        slow = head;
+        while (slow != fast) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return fast;
+        }
+        */
 }
