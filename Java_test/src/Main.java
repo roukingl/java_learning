@@ -1,9 +1,6 @@
 
 public class Main {
 
-    public static void main(String[] args) {
-
-    }
     // 反转一个单链表
             /*
             public ListNode reverseList(ListNode head) {
