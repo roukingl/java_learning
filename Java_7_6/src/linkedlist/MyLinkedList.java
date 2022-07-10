@@ -5,12 +5,12 @@ package linkedlist;
  */
 public class MyLinkedList {
 
-    Node head = new Node();
+    ListNode head;
 
     // 打印该链表
     public void display() {
 
-        Node cur = this.head;
+        ListNode cur = this.head;
         while (cur != null) {
             System.out.print(cur.value + " ");
             cur = cur.next;
@@ -21,23 +21,23 @@ public class MyLinkedList {
     //头插法
     public void addFirst(int data) {
 
-        Node node = new Node(data);
+        ListNode node = new ListNode(data);
         node.next = this.head;
         this.head = node;
     }
 
     //尾插法
     public void addLast(int data) {
-        Node cur = this.head;
+        ListNode cur = this.head;
         while (cur.next != null) {
             cur = cur.next;
         }
-        cur.next = new Node(data);
+        cur.next = new ListNode(data);
     }
 
     // 任意位置插入
     public boolean addIndex(int index, int data) {
-        Node cur = this.head;
+        ListNode cur = this.head;
         // 检查index
         checkIndexLegal(index);
 
@@ -53,7 +53,7 @@ public class MyLinkedList {
                 cur = cur.next;
                 index--;
             }
-            Node node = new Node(data);
+            ListNode node = new ListNode(data);
             node.next = cur.next;
             cur.next = node;
         }
@@ -71,7 +71,7 @@ public class MyLinkedList {
     //查找是否包含关键字key是否在单链表当中
     public boolean contains(int key) {
 
-        Node cur = this.head;
+        ListNode cur = this.head;
         while (cur != null) {
             if (cur.value == key) {
                 return true;
@@ -85,7 +85,7 @@ public class MyLinkedList {
         if(this.head == null) {
             return;
         }
-        Node cur = this.head;
+        ListNode cur = this.head;
         while (cur != null) {
             if (cur.next.value == key) {
                 cur.next = cur.next.next;
@@ -100,8 +100,8 @@ public class MyLinkedList {
         if (this.head == null) {
             return;
         }
-        Node ret = this.head;
-        Node cur = this.head.next;
+        ListNode ret = this.head;
+        ListNode cur = this.head.next;
         while (cur != null) {
             if (cur.value == key) {
                 ret.next = cur.next;
@@ -125,7 +125,7 @@ public class MyLinkedList {
      */
     public int size() {
         int count = 0;
-        Node cur = this.head;
+        ListNode cur = this.head;
         while (cur != null) {
             count++;
             cur = cur.next;
@@ -138,20 +138,12 @@ public class MyLinkedList {
         if (this.head == null) {
             return;
         }
-        Node cur = this.head;
+        ListNode cur = this.head;
         while (cur != null) {
-            Node ret = cur;
+            ListNode ret = cur;
             ret.next = null;
             cur = cur.next;
         }
         this.head = null;
     }
-
-    public MyLinkedList() {
-    }
-
-    public MyLinkedList(int data) {
-        head.value = data;
-    }
-
 }

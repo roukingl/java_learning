@@ -1,18 +1,18 @@
 package linkedlist;
 
-public class Node {
+public class ListNode {
 
     // 存放的值
     public int value;
 
     // 下一个节点的引用
-    public Node next;
+    public ListNode next;
 
-    public Node() {
+    public ListNode() {
 
     }
 
-    public Node(int value) {
+    public ListNode(int value) {
 
         this.value = value;
     }
