@@ -1,9 +1,7 @@
 
 package arraylist;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class MyArrayList {
 
@@ -114,7 +112,7 @@ public class MyArrayList {
      */
     public void checkPosLegal(int pos) {
         if (pos < 0 || pos > usedSize) {
-            throw new PosIndexNotLegalExcepetion("pos位置不合法");
+            throw new PosIndexNotLegalException("pos位置不合法");
         }
     }
 
@@ -198,9 +196,4 @@ public class MyArrayList {
         */
         this.usedSize = 0;
     }
-
-
-
-
-
 }
