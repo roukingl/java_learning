@@ -1,4 +1,6 @@
+
 public class IndexNotLegalException extends RuntimeException{
+
     public IndexNotLegalException() {
     }
 
