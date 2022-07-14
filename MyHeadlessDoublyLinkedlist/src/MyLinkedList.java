@@ -86,23 +86,66 @@ public class MyLinkedList {
     //删除第一次出现关键字为key的节点
     public void remove(int key) {
         ListNode cur = this.head;
-        if (cur.val == key) {
-            head = cur.next;
-            return;
-        }
+
         while (cur != null) {
             if (cur.val == key) {
-                cur.prev.next = cur.next;
-                cur.next.prev = cur.prev;
+                // 处理头节点问题
+                if (cur == head) {
+                    // 改变链表的头
+                    head = cur.next;
+                    // 判断改变后的头是不是空，是的话不管，不是的话就把头的prev置为null
+                    // 本质是处理只有一个节点的情况
+                    if (head != null) {
+                        head.prev = null;
+                    }
+                } else {
+                    // 不是头结点
+                    cur.prev.next = cur.next;
+                    // 处理链表的尾
+                    if (cur == end) {
+                        // 尾前移
+                        end = cur.prev;
+                        end.next = null;
+                    } else {
+                        cur.next.prev = cur.prev;
+                    }
+                }
                 return;
             }
+            cur = cur.next;
         }
     }
 
     //删除所有值为key的节点
     public void removeAllKey(int key) {
+        ListNode cur = this.head;
 
-
+        while (cur != null) {
+            if (cur.val == key) {
+                // 处理头节点问题
+                if (cur == head) {
+                    // 改变链表的头
+                    head = cur.next;
+                    // 判断改变后的头是不是空，是的话不管，不是的话就把头的prev置为null
+                    // 本质是处理只有一个节点的情况
+                    if (head != null) {
+                        head.prev = null;
+                    }
+                } else {
+                    // 不是头结点
+                    cur.prev.next = cur.next;
+                    // 处理链表的尾
+                    if (cur == end) {
+                        // 尾前移
+                        end = cur.prev;
+                        end.next = null;
+                    } else {
+                        cur.next.prev = cur.prev;
+                    }
+                }
+            }
+            cur = cur.next;
+        }
     }
 
     //得到单链表的长度
