@@ -69,20 +69,41 @@ class MinStack {
 }
 */
 
+import java.util.Stack;
+
 class MinStack {
 
+    Stack<Integer> mStack;
+    Stack<Integer> aStack;
+
     public MinStack() {
+        mStack = new Stack<>();
+        aStack = new Stack<>();
     }
 
     public void push(int x) {
+        mStack.push(x);
+        if (aStack.empty()) {
+            aStack.push(x);
+        } else {
+            if (Math.min(aStack.peek(), x) == x) {
+                aStack.push(x);
+            } else {
+                aStack.push(aStack.peek());
+            }
+        }
     }
 
     public void pop() {
+        mStack.pop();
+        aStack.pop();
     }
 
     public int top() {
+        return mStack.peek();
     }
 
     public int getMin() {
+        return aStack.peek();
     }
 }
