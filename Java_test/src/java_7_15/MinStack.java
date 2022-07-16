@@ -86,11 +86,7 @@ class MinStack {
         if (aStack.empty()) {
             aStack.push(x);
         } else {
-            if (Math.min(aStack.peek(), x) == x) {
-                aStack.push(x);
-            } else {
-                aStack.push(aStack.peek());
-            }
+            aStack.push(Math.min(aStack.peek(), x));
         }
     }
 
