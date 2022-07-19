@@ -15,6 +15,7 @@ public class BinaryTree {
         preOrder(root.right);
     }
 
+
     // 中序遍历
     void inOrder(TreeNode root) {
         if (root == null) {
