@@ -45,7 +45,7 @@ public class PriorityQueue {
         int child = 2 * root + 1;
         while (child < end) {
             // 如果右孩子大，下标指向右孩子，而且要有右孩子，
-            if (child + 1 < usedSize && elem[child + 1] > elem[child]) {
+            if (child + 1 < end && elem[child + 1] > elem[child]) {
                 child++;
             }
             // 比较child下标的孩子和根的大小关系
