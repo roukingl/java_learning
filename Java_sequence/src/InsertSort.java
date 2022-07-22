@@ -1,6 +1,4 @@
-package insertsort;
-
-public class Sort {
+public class InsertSort {
 
     /**
      * 直接插入排序
@@ -21,8 +19,9 @@ public class Sort {
                 } else {
                     break;
                 }
-                array[j + 1] = tmp;
             }
+            array[j + 1] = tmp;
         }
     }
+
 }

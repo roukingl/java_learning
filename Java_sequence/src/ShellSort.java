@@ -1,5 +1,3 @@
-package shellsort;
-
 /**
  * 希尔排序
  * 时间复杂度：O(n^1.3 - n^1.6)
@@ -19,8 +17,8 @@ public class ShellSort {
                 } else {
                     break;
                 }
-                array[j + gap] = tmp;
             }
+            array[j + gap] = tmp;
         }
     }
     
@@ -31,5 +29,11 @@ public class ShellSort {
             gap /= 2;
         }
         shell(array, 1);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {343, 3, 45, 6, 36, 10};
+        shellSort(arr);
+        System.out.println();
     }
 }
