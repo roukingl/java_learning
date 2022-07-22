@@ -35,7 +35,15 @@ public class Test {
         System.out.println("堆排序时间差 " + (endTime - beginTime));
     }
 
-    public static void main(String[] args) {
+    public static void difTimeQuickSort(int[] array) {
+        array = Arrays.copyOf(array,array.length);
+        long beginTime = System.currentTimeMillis();
+        QuickSort.quickSort(array);
+        long endTime = System.currentTimeMillis();
+        System.out.println("快排Korae法序时间差 " + (endTime - beginTime));
+    }
+
+    public static void main1(String[] args) {
         int[] array = new int[10_0000];
         inItArraysNotSort(array); // 无序
         //inItArraysSort(array); // 有序
@@ -46,9 +54,9 @@ public class Test {
         difTimeHeapSort(array);
     }
 
-    public static void main1(String[] args) {
+    public static void main(String[] args) {
         int[] arr = {343, 3, 45, 6, 36, 10};
-        HeapSort.heapSort(arr);
+        QuickSort.quickSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
