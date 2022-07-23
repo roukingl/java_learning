@@ -1,3 +1,4 @@
+import javax.imageio.stream.ImageInputStream;
 
 public class SelectSort {
 
@@ -17,6 +18,31 @@ public class SelectSort {
                 }
             }
             swap(array, i, minIndex);
+        }
+    }
+
+    // 一次交换两个，一个最小， 一个最大，时间复杂度不变
+    public static void selectSort2(int[] array) {
+        int left = 0;
+        int right = array.length;
+        while (left < right) {
+            int minSub = left;
+            int maxSub = left;
+            for (int i = left + 1; i <= right; i++) {
+                if (array[i] > array[maxSub]) {
+                    maxSub = i;
+                }
+                if (array[i] < array[minSub]) {
+                    minSub = i;
+                }
+            }
+            swap(array, left, minSub);
+            if (left == maxSub) {
+                maxSub = minSub;
+            }
+            swap(array, right, maxSub);
+            left++;
+            right--;
         }
     }
 

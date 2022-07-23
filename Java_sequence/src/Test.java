@@ -4,7 +4,7 @@ import java.util.Random;
 public class Test {
 
     public static void difTimeInsertSort(int[] array) {
-        array = Arrays.copyOf(array,array.length);
+        array = Arrays.copyOf(array, array.length);
         long beginTime = System.currentTimeMillis();
         InsertSort.insertSort(array);
         long endTime = System.currentTimeMillis();
@@ -12,7 +12,7 @@ public class Test {
     }
 
     public static void difTimeShellSort(int[] array) {
-        array = Arrays.copyOf(array,array.length);
+        array = Arrays.copyOf(array, array.length);
         long beginTime = System.currentTimeMillis();
         ShellSort.shellSort(array);
         long endTime = System.currentTimeMillis();
@@ -20,7 +20,7 @@ public class Test {
     }
 
     public static void difTimeSelectSort(int[] array) {
-        array = Arrays.copyOf(array,array.length);
+        array = Arrays.copyOf(array, array.length);
         long beginTime = System.currentTimeMillis();
         SelectSort.selectSort(array);
         long endTime = System.currentTimeMillis();
@@ -28,7 +28,7 @@ public class Test {
     }
 
     public static void difTimeHeapSort(int[] array) {
-        array = Arrays.copyOf(array,array.length);
+        array = Arrays.copyOf(array, array.length);
         long beginTime = System.currentTimeMillis();
         HeapSort.heapSort(array);
         long endTime = System.currentTimeMillis();
@@ -36,11 +36,11 @@ public class Test {
     }
 
     public static void difTimeQuickSort(int[] array) {
-        array = Arrays.copyOf(array,array.length);
+        array = Arrays.copyOf(array, array.length);
         long beginTime = System.currentTimeMillis();
         QuickSort.quickSort(array);
         long endTime = System.currentTimeMillis();
-        System.out.println("快排Korae法序时间差 " + (endTime - beginTime));
+        System.out.println("快排时间差 " + (endTime - beginTime));
     }
 
     public static void main1(String[] args) {
@@ -52,11 +52,12 @@ public class Test {
         difTimeShellSort(array);
         //difTimeSelectSort(array);
         difTimeHeapSort(array);
+        difTimeQuickSort(array);
     }
 
     public static void main(String[] args) {
-        int[] arr = {343, 3, 45, 6, 36, 10};
-        QuickSort.quickSort(arr);
+        int[] arr = {2, 54, 566, 76, 67, 3, 3, 5, 76, 5};
+        MergeSort.mergeSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
