@@ -11,7 +11,6 @@ public class ShellSort {
             int tmp = array[i];
             int j = i - gap;
             for (; j >= 0; j -= gap) {
-                // 加=变不稳定
                 if (tmp < array[j]) {
                     array[j + gap] = array[j];
                 } else {

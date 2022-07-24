@@ -57,7 +57,7 @@ public class Test {
 
     public static void main(String[] args) {
         int[] arr = {2, 54, 566, 76, 67, 3, 3, 5, 76, 5};
-        MergeSort.mergeSort(arr);
+        CountSort.countSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
