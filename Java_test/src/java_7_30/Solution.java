@@ -86,15 +86,6 @@ class Solution {
         return head;
     }
 
-    /*// newcoder BM2 链表内指定区间反转
-    public ListNode reverseBetween (ListNode head, int m, int n) {
-        if (head == null) {
-            return null;
-        }
-        ListNode prev = head;
-        ListNode mHead = prev.
-    }*/
-
     // leetcode 1441用栈操作构建数组
     public List<String> buildArray(int[] target, int n) {
         List<String> list = new LinkedList<>();
