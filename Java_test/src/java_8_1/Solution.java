@@ -1,5 +1,10 @@
 package java_8_1;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class Solution {
 
     // nowcoder BM6 判断链表中是否有环
@@ -147,6 +152,37 @@ public class Solution {
 
         return x == ret || x == ret / 10;
     }
+
+    // 13罗马数字转整数
+    public int romanToInt(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+        int num = 0;
+        for (int i = 0; i < s.length() - 1; i++) {
+            char left = s.charAt(i);
+            char right = s.charAt(i + 1);
+            int values = map.get(left);
+            if (values >= map.get(right)) {
+                num += values;
+            } else {
+                num -= values;
+            }
+        }
+        num += map.get(s.charAt(s.length() - 1));
+        return num;
+    }
+
+
+
+
+
+
 }
 
 
