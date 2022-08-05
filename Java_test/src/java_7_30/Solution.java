@@ -127,9 +127,9 @@ class Solution {
         return array;
     }
 
-    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+    /*public int[] nextGreaterElement(int[] nums1, int[] nums2) {
 
-    }
+    }*/
 }
 
 
