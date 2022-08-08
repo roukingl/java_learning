@@ -38,4 +38,38 @@ class Solution {
         }
         return result;
     }
+
+    // leetcode 8.字符串转换整数
+    public int myAtoi(String s) {
+        int index = 0;
+        int len = s.length();
+        while (index < len && s.charAt(index) == ' ') {
+            index++;
+        }
+        int start = index;
+        int sign = 1;
+        int result = 0;
+        while (index < len) {
+            char ch = s.charAt(index);
+            if (index == start && ch == '-') {
+                sign = -1;
+            } else if (index == start && ch == '+') {
+                sign = 1;
+            } else if (Character.isDigit(ch)) {
+                int num = ch - '0';
+                if(result > Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE / 10 && num>Integer.MAX_VALUE % 10)){
+                    return Integer.MAX_VALUE;
+                }
+
+                if(result < Integer.MIN_VALUE/10 || (result == Integer.MIN_VALUE / 10 && -num < Integer.MIN_VALUE % 10)){
+                    return Integer.MIN_VALUE;
+                }
+                result = result * 10 + sign * num;
+            } else {
+                break;
+            }
+            index++;
+        }
+        return result;
+    }
 }
