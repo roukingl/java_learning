@@ -21,6 +21,7 @@ class Solution {
             rus[i] = map.get(nums1[i]);
         }
 
+
         return rus;
     }
 }
