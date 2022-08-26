@@ -18,6 +18,7 @@ class Solution {
         }
 
         int[] rus = new int[nums1.length];
+
         for (int i = 0; i < nums1.length; i++) {
             rus[i] = map.get(nums1[i]);
         }
