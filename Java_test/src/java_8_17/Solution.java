@@ -6,7 +6,7 @@ import java.util.Stack;
 
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-            Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         Stack<Integer> stack = new Stack<>();
         for (int i = nums2.length - 1; i >= 0; i--) {
             int ret = nums2[i];
