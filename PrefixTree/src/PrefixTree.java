@@ -3,6 +3,7 @@ public class PrefixTree {
 
     TreeNode root = new TreeNode();
 
+    // 插入字符串s
     public void insertDate(String s) {
         if (s == null) {
             return;
@@ -60,8 +61,19 @@ public class PrefixTree {
     }
 
     // 删除前缀树中的字符串
-    public void remove () {
-
+    public void remove (String s) {
+        if (serch(s) >= 1) {
+            TreeNode cur = root;
+            char[] checkChar = s.toCharArray();
+            int index = 0;
+            cur.pass--;
+            for (int i = 0; i < checkChar.length; i++) {
+                index = checkChar[i] - 'a';
+                cur = cur.nodes[index];
+                cur.pass--;
+            }
+            cur.end--;
+        }
     }
 
 }
