@@ -60,6 +60,7 @@ public class PrefixTree {
         return cur.end;
     }
 
+
     // 删除前缀树中的字符串
     public void remove (String s) {
         if (serch(s) >= 1) {
