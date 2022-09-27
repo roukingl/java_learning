@@ -31,6 +31,7 @@ public class KMP {
         return j == ch2.length ? i - j : -1;
     }
 
+
     private int[] getNextArray(char[] ch) {
         if (ch.length == 1) {
             return new int[] { -1 };
