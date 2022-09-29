@@ -24,7 +24,7 @@ class MyTask implements Comparable<MyTask> {
 
     @Override
     public int compareTo(MyTask o) {
-        return (int) (this.time - o.time);
+        return (int)(this.time - o.time);
     }
 }
 
