@@ -5,14 +5,14 @@ public class Edge {
     public int weight;
 
     // 该边从哪个节点来
-    public int from;
+    public Node from;
 
     // 该边连接哪个节点
-    public int to;
+    public Node to;
 
-    public Edge(int weight, int from, int to) {
+    public Edge(int weight, Node from, Node to) {
         this.weight = weight;
-        this.from = 0;
-        this.to = 0;
+        this.from = from;
+        this.to = to;
     }
 }
