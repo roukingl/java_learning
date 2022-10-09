@@ -3,6 +3,8 @@ package java_10_8;
 import java.util.*;
 
 class Solution {
+
+    // leetcode 350. 两个数组的交集 II
     public int[] intersect(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) {
             return intersect(nums2, nums1);
@@ -27,5 +29,11 @@ class Solution {
             }
         }
         return Arrays.copyOfRange(result, 0, index);
+    }
+
+
+    // leetcode 121. 买卖股票的最佳时机
+    public int maxProfit(int[] prices) {
+
     }
 }
