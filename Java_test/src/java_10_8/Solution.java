@@ -34,6 +34,34 @@ class Solution {
 
     // leetcode 121. 买卖股票的最佳时机
     public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxPrice = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < minPrice) {
+                minPrice = prices[i];
+            } else if (prices[i] - minPrice > maxPrice) {
+                maxPrice = prices[i] - minPrice;
+            }
+        }
+        return maxPrice;
+    }
 
+    // leetcode 118. 杨辉三角
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> flist = new ArrayList<>();
+        flist.add(1);
+        list.add(flist);
+        for (int i = 1; i < numRows; i++) {
+            List<Integer> row = new ArrayList<>();
+            List<Integer> prevRow = list.get(i - 1);
+            row.add(1);
+            for (int j = 1; j < i; j++) {
+                row.add(prevRow.get(j - 1) + prevRow.get(j));
+            }
+            row.add(1);
+            list.add(row);
+        }
+        return list;
     }
 }
