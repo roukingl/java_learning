@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main3 {
 
-    public static int MoreThanHalfNum_Solution (int[] numbers) {
+    public static int MoreThanHalfNum_Solution(int[] numbers) {
         if (numbers.length == 1) {
             return numbers[0];
         }
@@ -26,7 +26,7 @@ public class Main3 {
     }
 
     public static void main(String[] args) {
-        int[] array = {1,2,3,2,2,2,5,4,2};
+        int[] array = {1, 2, 3, 2, 2, 2, 5, 4, 2};
         System.out.println(MoreThanHalfNum_Solution(array));
     }
 
