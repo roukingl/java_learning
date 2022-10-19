@@ -15,7 +15,7 @@ public class TcpEchoServer {
     private ServerSocket serverSocket = null;
 
     public TcpEchoServer(int port) throws IOException {
-        // 创建服务端
+        // 创建服务端连接
         serverSocket = new ServerSocket(port);
     }
 
