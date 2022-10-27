@@ -9,7 +9,7 @@ public class Main16 {
     // q 113
     // k 107
     // a 97
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
         StringBuilder sb = new StringBuilder();
@@ -57,7 +57,7 @@ public class Main16 {
         } else {
 
         }
-    }
+    }*/
 
     public static void main1(String[] args) {
         Scanner scanner = new Scanner(System.in);
