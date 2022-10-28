@@ -4,7 +4,34 @@ import java.util.*;
 
 public class Main18 {
 
+    public static int findMinimum(int n, int[] left, int[] right) {
+        int leftSum = 0;
+        int rightSum = 0;
+        int leftMin = Integer.MAX_VALUE;
+        int rightMin = Integer.MAX_VALUE;
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            if (left[i] == 0 || right[i] == 0) {
+                sum += left[i] + right[i];
+            } else {
+                leftSum += left[i];
+                rightSum += right[i];
+                if (leftMin > left[i]) {
+                    leftMin = left[i];
+                }
+                if (rightMin > right[i]) {
+                    rightMin = right[i];
+                }
+            }
+        }
+        return Math.min(leftSum - leftMin + 1, rightSum - rightMin + 1) + sum + 1;
+    }
 
+    public static void main(String[] args) {
+        int[] a1 = new int[]{0, 7, 1, 6};
+        int[] a2 = new int[]{1, 5, 0, 6};
+        System.out.println(findMinimum(4, a1, a2));
+    }
 
     public static void main1(String[] args) {
         Scanner scanner = new Scanner(System.in);
