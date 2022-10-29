@@ -7,6 +7,20 @@ class Solution {
     public static void main(String[] args) {
     }
 
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        return getPath(root, 0, targetSum);
+    }
+
+    private boolean getPath(TreeNode root, int sum, int targetSum) {
+        if (root == null) {
+            return false;
+        }
+        sum += root.val;
+        if (root.left == null && root.right == null) {
+            return sum == targetSum;
+        }
+        return getPath(root.left, sum, targetSum) || getPath(root.right, sum, targetSum);
+    }
 
     // leetcode 242. 有效的字母异位词
     public boolean isAnagram(String s, String t) {
