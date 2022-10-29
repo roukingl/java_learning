@@ -7,6 +7,25 @@ class Solution {
     public static void main(String[] args) {
     }
 
+
+    // leetcode 242. 有效的字母异位词
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        int[] array = new int[26];
+        for (char ch : s.toCharArray()) {
+            array[ch - 'a']++;
+        }
+        for (char ch : t.toCharArray()) {
+            array[ch - 'a']--;
+            if (array[ch - 'a'] < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // leetcode 383. 赎金信 数组
     public boolean canConstruct(String ransomNote, String magazine) {
         if (ransomNote.length() > magazine.length()) {
