@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -13,10 +14,15 @@ import java.util.concurrent.Executors;
 public class TcpEchoServer {
 
     private ServerSocket serverSocket = null;
+    HashMap<String, String> map;
 
     public TcpEchoServer(int port) throws IOException {
         // 创建服务端连接
         serverSocket = new ServerSocket(port);
+        map = new HashMap<>();
+        map.put("dog", "小狗");
+        map.put("cat", "小猫");
+        map.put("translate", "翻译");
     }
 
     public void start() throws IOException {
@@ -64,12 +70,11 @@ public class TcpEchoServer {
     }
 
     private String process(String request) {
-        return request;
+        return map.getOrDefault(request, "字典中没有该单词");
     }
 
     public static void main(String[] args) throws IOException {
         TcpEchoServer tcpEchoServer = new TcpEchoServer(9090);
         tcpEchoServer.start();
     }
-
 }
