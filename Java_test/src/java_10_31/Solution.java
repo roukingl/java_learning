@@ -39,6 +39,7 @@ class Solution {
         return false;
     }
 
+
     public void inOrder(TreeNode root, LinkedList<Integer> list) {
         if (root == null) {
             return;
