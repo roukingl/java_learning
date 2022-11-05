@@ -4,6 +4,72 @@ import java.util.*;
 
 class Solution {
 
+    // leetcode 75. 颜色分类
+    public void sortColors2(int[] nums) {
+        // [0 - p0) 全0
+        // [p0 - i) 全1
+        // (p2 - len - 1] 全2
+        int p0 = 0;
+        int p2 = nums.length - 1;
+        int i = 0;
+        while (i <= p2) {
+            if (nums[i] == 0) {
+                swap(nums, i, p0);
+                p0++;
+                i++;
+            } else if (nums[i] == 1) {
+                i++;
+            } else {
+                // nums[i] == 2
+                swap(nums, p2, i);
+                p2--;
+            }
+        }
+    }
+
+    // leetcode 75. 颜色分类
+    public void sortColors1(int[] nums) {
+        int p0 = 0;
+        int p1 = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                swap(nums, p0, i);
+                if (p0 < p1) {
+                    swap(nums, p1, i);
+                }
+                p0++;
+                p1++;
+            } else if (nums[i] == 1) {
+                swap(nums, p1, i);
+                p1++;
+            }
+
+        }
+    }
+
+    // leetcode 75. 颜色分类
+    public void sortColors(int[] nums) {
+        int head = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                swap(nums, i, head);
+                head++;
+            }
+        }
+        for (int i = head; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                swap(nums, i, head);
+                head++;
+            }
+        }
+    }
+
+    private void swap(int[] nums, int index1, int index2) {
+        int tmp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = tmp;
+    }
+
     // newcoder HJ53 杨辉三角的变形
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
