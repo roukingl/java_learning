@@ -7,7 +7,7 @@ public class KMP {
      * 从一个str1字符串中找到str2字符串
      * @param str1 被找的字符串
      * @param str2 要找的字符串
-     * @return 找到返回真,没找到返回假
+     * @return 找到返回字符串的长度
      */
     public int searchStringKMP(String str1, String str2) {
         if (str1 == null || str2 == null || str1.length() < str2.length() || str2.length() < 1) {
