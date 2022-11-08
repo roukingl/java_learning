@@ -64,6 +64,7 @@ public class Main20 {
                 break;
             }
 
+
             index1 = 0;
         }
         return maxLength;
