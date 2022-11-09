@@ -30,7 +30,7 @@ public class Main19 {
     }
 
     private static int KMP(String s1, String str) {
-
+        return 0;
     }
 
 
