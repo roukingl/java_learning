@@ -32,12 +32,12 @@ class MyHashMap {
     }
 
     private final int BASE_SIZE = 769;
-    private LinkedList[] list = null;
+    private LinkedList<KV>[] list = null;
 
     public MyHashMap() {
         list = new LinkedList[BASE_SIZE];
         for (int i = 0; i < BASE_SIZE; i++) {
-            list[i] = new LinkedList<KV>();
+            list[i] = new LinkedList<>();
         }
     }
     
