@@ -12,5 +12,6 @@ public class HelloServlet extends HttpServlet {
 //        super.doGet(req, resp);
         System.out.println("hello servlet");
         resp.getWriter().write("hello");
+
     }
 }
