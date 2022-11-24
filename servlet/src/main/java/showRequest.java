@@ -29,7 +29,7 @@ public class showRequest extends HttpServlet {
             stringBuilder.append(key).append(": ").append(value);
             stringBuilder.append("<br>");
         }
-        resp.setContentType("test/html; charset=utf8");
+        resp.setContentType("text/html; charset=utf8");
         resp.getWriter().write(stringBuilder.toString());
     }
 }
