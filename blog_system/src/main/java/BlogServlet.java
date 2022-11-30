@@ -19,6 +19,7 @@ public class BlogServlet extends HttpServlet {
         resp.setContentType("application/json; charset=utf8");
         BlogDao blogDao = new BlogDao();
         List<Blog> blogs = blogDao.selectAll();
+
         resp.getWriter().write(objectMapper.writeValueAsString(blogs));
     }
 }
