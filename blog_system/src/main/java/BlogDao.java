@@ -107,29 +107,31 @@ public class BlogDao {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        List<Blog> list = null;
+        List<Blog> blogs = new ArrayList<>();
         try {
             connection = DBUtil.getConnection();
 
-            String sql = "select * form blog";
+            String sql = "select * from blog order by postTime desc";
             statement = connection.prepareStatement(sql);
             resultSet = statement.executeQuery();
-            list = new ArrayList<>();
             while (resultSet.next()) {
                 Blog blog = new Blog();
                 blog.setBlogId(resultSet.getInt("blogId"));
                 blog.setTitle(resultSet.getString("title"));
-                blog.setContent(resultSet.getString("content"));
+                String content = resultSet.getString("content");
+                if (content.length() > 100) {
+                    content = content.substring(0, 100) + "...";
+                }
+                blog.setContent(content);
                 blog.setPostTime(resultSet.getTimestamp("postTime"));
                 blog.setUserId(resultSet.getInt("userId"));
-                list.add(blog);
+                blogs.add(blog);
             }
-            return list;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
             DBUtil.close(connection, statement, resultSet);
         }
-        return null;
+        return blogs;
     }
 }

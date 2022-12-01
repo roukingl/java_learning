@@ -1,4 +1,5 @@
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Blog {
 
@@ -7,8 +8,10 @@ public class Blog {
     private String content;
     private Timestamp postTime;
 
-    public Timestamp getPostTime() {
-        return postTime;
+    public String getPostTime() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        return simpleDateFormat.format(postTime);
     }
 
     public void setPostTime(Timestamp postTime) {

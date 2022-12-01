@@ -17,9 +17,25 @@ public class BlogServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json; charset=utf8");
+        String blogId = req.getParameter("blogId");
         BlogDao blogDao = new BlogDao();
-        List<Blog> blogs = blogDao.selectAll();
+        if (blogId == null) {
+            // 博客列表页的显示
+            List<Blog> blogs = blogDao.selectAll();
+            resp.getWriter().write(objectMapper.writeValueAsString(blogs));
+        } else {
+            //带有blogId说明是博客详情页
+            Blog blog = blogDao.selectOne(Integer.parseInt(blogId));
+            resp.getWriter().write(objectMapper.writeValueAsString(blog));
+        }
+    }
 
-        resp.getWriter().write(objectMapper.writeValueAsString(blogs));
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf8");
+        String blogId = req.getParameter("blogId");
+        if (blogId == null) {
+            // 跳转
+        }
     }
 }

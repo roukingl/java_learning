@@ -68,7 +68,7 @@
                     let container = document.querySelector('.container-right');
                     for (let blog of body) {
                         let blogDiv = document.createElement('div');
-                        blogDiv.className = blog;
+                        blogDiv.className = 'blog';
 
                         let titleDiv = document.createElement('div');
                         titleDiv.className = 'title';
@@ -80,10 +80,10 @@
 
                         let descDiv = document.createElement('div');
                         descDiv.className = 'desc';
-                        dateDiv.innerHTML = blog.content;
+                        descDiv.innerHTML = blog.content;
 
                         let a = document.createElement('a');
-                        a.herf = 'blog_detail.html?userId' + blog.userId;
+                        a.href = 'blog_detail.html?blogId=' + blog.blogId;
                         a.innerHTML = '查看全文 &gt;&gt;';
                         
                         blogDiv.appendChild(titleDiv);
@@ -100,7 +100,7 @@
         
         getBlogs();
 
-        
     </script>
+
 </body>
 </html>
