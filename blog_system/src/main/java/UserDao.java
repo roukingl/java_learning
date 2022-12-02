@@ -50,6 +50,7 @@ public class UserDao {
 
             String sql = "select * from user where userId = ?";
             statement = connection.prepareStatement(sql);
+            statement.setInt(1, userId);
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 User user = new User();
