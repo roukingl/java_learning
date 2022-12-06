@@ -45,6 +45,7 @@ public class BlogDeleteServlet extends HttpServlet {
             resp.getWriter().write("当前用户无删除权限");
             return;
         }
+
         blogDao.delete(Integer.parseInt(blogId));
         resp.setContentType("text/html; charset=utf8");
         resp.sendRedirect("blog_list.html");
