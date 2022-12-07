@@ -30,22 +30,22 @@ public class UserInfoServlet extends HttpServlet {
         if (blog == null) {
             resp.setStatus(404);
             resp.setContentType("text/html; charset=utf8");
-            resp.getWriter().write( "blogId不存在, 请重新输入");
-        } else {
-            // 找到博客根据博客找到作者
-            UserDao userDao = new UserDao();
-            User user = userDao.selectUser(blog.getUserId());
-            if (user == null) {
-                // 作者没找到
-                resp.setStatus(404);
-                resp.setContentType("text/html; charset=utf8");
-                resp.getWriter().write("blogId不存在, 请重新输入");
-            } else {
-                user.setPassword("");
-                resp.setContentType("application/json; charset=utf8");
-                resp.getWriter().write(objectMapper.writeValueAsString(user));
-            }
+            resp.getWriter().write("blogId不存在, 请重新输入");
+            return;
         }
+        // 找到博客根据博客找到作者
+        UserDao userDao = new UserDao();
+        User user = userDao.selectUser(blog.getUserId());
+        if (user == null) {
+            // 作者没找到
+            resp.setStatus(404);
+            resp.setContentType("text/html; charset=utf8");
+            resp.getWriter().write("blogId不存在, 请重新输入");
+            return;
+        }
+        user.setPassword("");
+        resp.setContentType("application/json; charset=utf8");
+        resp.getWriter().write(objectMapper.writeValueAsString(user));
     }
 
     private void getUserInfoFromSession(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -55,17 +55,17 @@ public class UserInfoServlet extends HttpServlet {
             resp.setStatus(403);
             resp.setContentType("text/html; charset=utf8");
             resp.getWriter().write("用户未登录, 请登录后访问");
-        } else {
-            User user = (User) session.getAttribute("user");
-            if (user == null) {
-                resp.setStatus(403);
-                resp.setContentType("text/html; charset=utf8");
-                resp.getWriter().write("用户未登录, 请登录后访问");
-            } else {
-                user.setPassword("");
-                resp.setContentType("application/json; charset=utf8");
-                resp.getWriter().write(objectMapper.writeValueAsString(user));
-            }
+            return;
         }
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            resp.setStatus(403);
+            resp.setContentType("text/html; charset=utf8");
+            resp.getWriter().write("用户未登录, 请登录后访问");
+            return;
+        }
+        user.setPassword("");
+        resp.setContentType("application/json; charset=utf8");
+        resp.getWriter().write(objectMapper.writeValueAsString(user));
     }
 }
