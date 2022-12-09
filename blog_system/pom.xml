@@ -40,7 +40,7 @@
 
     <packaging>war</packaging>
     <build>
-        <finalName>BlogSystem</finalName>
+        <finalName>blogSystem</finalName>
     </build>
 
 </project>
