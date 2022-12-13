@@ -9,9 +9,6 @@ class Solution {
         System.out.println(Arrays.toString((productExceptSelf(nums))));
     }
 
-
-
-
     // leetcode 238. 除自身以外数组的乘积
     public static int[] productExceptSelf(int[] nums) {
         int len = nums.length;
