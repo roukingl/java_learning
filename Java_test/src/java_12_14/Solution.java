@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Solution {
+
     
     // leetcode 290. 单词规律
     public boolean wordPattern(String pattern, String s) {
