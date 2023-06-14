@@ -1,4 +1,4 @@
-package test_2023.java_6_13;
+package test_2023.linkedlist;
 
 class Solution {
 
@@ -187,4 +187,82 @@ class Solution {
 //        }
 //        return true;
 //    }
+
+
+    // leetcod 160. 相交链表 AB链表不断首尾，最多循环A + B 次就可以得出
+//    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+//        if (headA == null || headB == null) {
+//            return null;
+//        }
+//        ListNode pA = headA;
+//        ListNode pB = headB;
+//        while (pA != pB) {
+//            if (pA == null) {
+//                pA = headB;
+//            } else {
+//                pA = pA.next;
+//            }
+//            if (pB == null) {
+//                pB = headA;
+//            } else {
+//                pB = pB.next;
+//            }
+//        }
+//        return pA;
+//    }
+
+    // 通过计算长度求差值来截断较长链表同步循环找到相交点
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode tmpA = headA;
+        ListNode tmpB = headB;
+        int lengthA = 0;
+        int lengthB = 0;
+        while (tmpA != null) {
+            tmpA = tmpA.next;
+            lengthA++;
+        }
+        while(tmpB != null) {
+            tmpB = tmpB.next;
+            lengthB++;
+        }
+        int length = 0;
+        if (lengthA > lengthB) {
+            length = lengthA - lengthB;
+            for (int i = 0; i < length && headA != null; i++) {
+                headA = headA.next;
+            }
+        } else {
+            length = lengthB - lengthA;
+            for (int i = 0; i < length && headB != null; i++) {
+                headB = headB.next;
+            }
+        }
+        while (headA != null && headB != null) {
+            if (headA != headB) {
+                headA = headA.next;
+                headB = headB.next;
+            } else {
+                return headA;
+            }
+        }
+        return null;
+    }
+
+    // leetcod 141. 环形链表
+    public boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        // 快慢指针
+        ListNode slow = head;
+        ListNode quick = head;
+        while (quick != null && quick.next != null) {
+            slow = slow.next;
+            quick = quick.next.next;
+            if (quick == slow ) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

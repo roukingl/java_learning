@@ -1,4 +1,4 @@
-package test_2023.java_6_13;
+package test_2023.linkedlist;
 
 import lombok.ToString;
 
