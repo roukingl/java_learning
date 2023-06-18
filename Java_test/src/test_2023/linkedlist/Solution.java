@@ -265,4 +265,50 @@ class Solution {
         }
         return false;
     }
+
+    // leetcode 2. 两数相加
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode cur1 = l1;
+        ListNode cur2 = l2;
+        int top = 0;
+        ListNode prev = null;
+        while (cur1 != null && cur2 != null) {
+            cur1.val = (cur1.val + cur2.val + top);
+            top = cur1.val / 10;
+            cur1.val = cur1.val % 10;
+            if (cur1.next == null) {
+                prev = cur1;
+            }
+            cur1 = cur1.next;
+            cur2 = cur2.next;
+        }
+        if (cur1 == null && cur2 != null) {
+            // 本体链表为空就链接另一个链表计算
+            prev.next = cur2;
+            while (cur2 != null) {
+                cur2.val = (cur2.val + top);
+                top = cur2.val / 10;
+                cur2.val = cur2.val % 10;
+                if (cur2.next == null) {
+                    prev = cur2;
+                }
+                cur2 = cur2.next;
+            }
+        } else if (cur1 != null) {
+            // 相加链表为空就照常加上top
+            while (cur1 != null) {
+                cur1.val = (cur1.val + top);
+                top = cur1.val / 10;
+                cur1.val = cur1.val % 10;
+                if (cur1.next == null) {
+                    prev = cur1;
+                }
+                cur1 = cur1.next;
+            }
+        }
+        if (top != 0) {
+            prev.next = new ListNode(top);
+        }
+        return l1;
+    }
 }
