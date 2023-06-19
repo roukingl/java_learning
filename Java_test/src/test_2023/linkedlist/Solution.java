@@ -1,5 +1,10 @@
 package test_2023.linkedlist;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 class Solution {
 
     // leetcod 203. 移除链表元素
@@ -311,4 +316,49 @@ class Solution {
         }
         return l1;
     }
+
+    // leetcode 138. 复制带随机指针的链表 TODO 还有递归没写
+    public Node copyRandomList(Node head) {
+        if (head == null) {
+            return null;
+        }
+        Node cur = head;
+        Map<Node, Node> map = new HashMap<>();
+        while (cur != null) {
+            map.put(cur, new Node(cur.val));
+            cur = cur.next;
+        }
+        cur = head;
+        while (cur != null) {
+            map.get(cur).next = map.get(cur.next);
+            map.get(cur).random = map.get(cur.random);
+            cur = cur.next;
+        }
+        return map.get(head);
+    }
+
+//    public Node copyRandomList(Node head) {
+//        Node cur = head;
+//        Map<Integer, Integer> map = new HashMap<>();
+//        List<Integer> list = new ArrayList<>();
+//        while (cur != null) {
+//            list.add(cur.val);
+//            map.put(cur.val, cur.random.val);
+//            cur = cur.next;
+//        }
+//        Node start = new Node(0);
+//        Node node = start;
+//        Map<Integer, Node> mapNode = new HashMap<>();
+//        for (Integer tmp : list) {
+//            node.next = new Node(tmp);
+//            node = node.next;
+//            mapNode.put(tmp, node);
+//        }
+//        node = start.next;
+//        while (node != null) {
+//            node.random = mapNode.get(map.get(node.val));
+//            node = node.next;
+//        }
+//        return start.next;
+//    }
 }
