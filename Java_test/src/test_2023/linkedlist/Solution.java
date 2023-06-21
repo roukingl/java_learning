@@ -337,7 +337,6 @@ class Solution {
         }
         return map.get(head);
     }
-
 //    public Node copyRandomList(Node head) {
 //        Node cur = head;
 //        Map<Integer, Integer> map = new HashMap<>();
