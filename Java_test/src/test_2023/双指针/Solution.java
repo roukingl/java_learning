@@ -6,10 +6,33 @@ import java.util.*;
 class Solution {
 
     public static void main(String[] args) {
-        List<List<Integer>> list = fourSum(new int[]{1000000000,1000000000,1000000000,1000000000}, -294967296);
-        System.out.println(list);
-        long s = 1000000000L * 4;
-        System.out.println();
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+    }
+
+    public int lengthOfLongestSubstring(String s) {
+        char[] strArray = s.toCharArray();
+        int left = 0;
+        int right = 0;
+        int result = 0;
+        int[] hash = new int[128];
+        while (right < strArray.length) {
+            if (hash[strArray[right]] == 0) {
+                // 当前字符在Set中没有重复的
+                hash[strArray[right]] = 1;
+                result = Math.max(result, right - left + 1);
+                right++;
+            } else {
+                // Set中有重复的 left移动到当前重复字符的后面
+                while (strArray[left] != strArray[right]) {
+                    // 并从Set中删除移出滑动窗口
+                    hash[strArray[left]] = 0;
+                    left++;
+                }
+                hash[strArray[left]] = 0;
+                left++;
+            }
+        }
+        return result;
     }
 
     public static List<List<Integer>> fourSum(int[] nums, int target) {
