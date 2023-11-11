@@ -2,14 +2,116 @@ package test_2023.双指针;
 
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.Stream;
 
 class Solution {
 
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(findAnagrams("abab", "ab"));
     }
 
-    public int lengthOfLongestSubstring(String s) {
+    public static List<Integer> findAnagrams(String s, String p) {
+        int sLength = s.length();
+        int pLength = p.length();
+        if (sLength < pLength) {
+            return new ArrayList<>();
+        }
+        // 维护字符串 p 的map
+        int[] defaultMap = new int[26];
+        for (char tmp : p.toCharArray()) {
+            defaultMap[tmp - 'a']++;
+        }
+        // 维护字符串 s 的map
+        int[] map = new int[26];
+        // 维护当前 map 中的有效字符数量
+        int count = 0;
+        int left = 0;
+        int right = 0;
+        char[] sCharArray = s.toCharArray();
+        List<Integer> result = new ArrayList<>();
+
+        while (right < sLength) {
+            map[sCharArray[right] - 'a']++;
+            if (map[sCharArray[right] - 'a'] <= defaultMap[sCharArray[right] - 'a']) {
+                // 说明当前添加进map中的字符是有效字符
+                count++;
+            }
+            if (right - left + 1 == pLength) {
+                if (count == pLength) {
+                    // 添加结果
+                    result.add(left);
+                }
+                // 需要移动窗口,更新count
+                map[sCharArray[left] - 'a']--;
+                if(map[sCharArray[left] - 'a'] < defaultMap[sCharArray[left] - 'a']) {
+                    count--;
+                }
+                left++;
+            }
+            right++;
+        }
+        return result;
+    }
+
+    public static List<Integer> findAnagrams1(String s, String p) {
+        int left = 0;
+        int right = p.length() - 1;
+        int n = s.length();
+        Map<Character, Integer> defaultMap = getMap(p);
+        List<Integer> result = new ArrayList<>();
+        while (right < n) {
+            Map<Character, Integer> tmpMap = getMap(s.substring(left, right + 1));
+            if (compareMap(tmpMap, defaultMap)) {
+                result.add(left);
+            }
+            left++;
+            right++;
+        }
+        return result;
+    }
+
+    private static Map<Character, Integer> getMap(String s) {
+        // 给一个字符串得到一个Map
+        Map<Character, Integer> map = new HashMap<>();
+        for (char tmp : s.toCharArray()) {
+            map.put(tmp, map.getOrDefault(tmp, 0) + 1);
+        }
+        return map;
+    }
+
+    private static boolean compareMap(Map<Character, Integer> map, Map<Character, Integer> defaultMap) {
+        for(Map.Entry<Character, Integer> entry : defaultMap.entrySet()) {
+            char c = entry.getKey();
+            int i = entry.getValue();
+            if (map.getOrDefault(c, 0) != i) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int totalFruit(int[] fruits) {
+        int left = 0;
+        int right = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        int n = fruits.length;
+        int result = 0;
+        while (right < n) {
+            map.put(fruits[right], map.getOrDefault(fruits[right], 0) + 1);
+            while (map.size() > 2) {
+                map.put(fruits[left], map.get(fruits[left]) - 1);
+                if (map.get(fruits[left]) == 0) {
+                    map.remove(fruits[left]);
+                }
+                left++;
+            }
+            result = Math.max(result, right - left + 1);
+            right++;
+        }
+        return result;
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
         char[] strArray = s.toCharArray();
         int left = 0;
         int right = 0;
