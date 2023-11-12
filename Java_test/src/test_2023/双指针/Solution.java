@@ -7,7 +7,107 @@ import java.util.stream.Stream;
 class Solution {
 
     public static void main(String[] args) {
-        System.out.println(findAnagrams("abab", "ab"));
+        System.out.println(minWindow("ab", "b"));
+    }
+
+    public static String minWindow(String s, String t) {
+        int sLength = s.length();
+        int tLength = t.length();
+        if (tLength > sLength) {
+            return "";
+        } else if (tLength == sLength && !s.equals(t)) {
+            return "";
+        }
+        int left = 0;
+        int right = 0;
+        // 默认的字符串哈希
+        int[] defaultMap = new int[127];
+        for (char tmp : t.toCharArray()) {
+            defaultMap[tmp - 'A']++;
+        }
+        // s字符串的哈希
+        int[] map = new int[127];
+        int startPoint = 0;
+        int minLength = Integer.MAX_VALUE;
+        char[] charArray = s.toCharArray();
+
+        while (right < sLength) {
+            // 进窗口
+            map[charArray[right] - 'A']++;
+            while (check(map, defaultMap)) {
+                // 相等，比较起点和长度，更新结果
+                if (minLength > right - left + 1) {
+                    minLength = right - left + 1;
+                    startPoint = left;
+                }
+                // 出窗口
+                map[charArray[left] - 'A']--;
+                left++;
+            }
+            right++;
+        }
+        return s.substring(startPoint, startPoint + minLength);
+    }
+
+    private static boolean check(int[] map, int[] defaultMap) {
+        for (int i = 0;i < map.length; i++) {
+            if (map[i] < defaultMap[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static List<Integer> findSubstring(String s, String[] words) {
+        // words 中一个单词的长度
+        int len = words[0].length();
+        int n = s.length();
+        if (words.length * len > n) {
+            return new ArrayList<>();
+        }
+        Map<String, Integer> defaultMap = new HashMap<>();
+        for (String tmp : words) {
+            defaultMap.put(tmp, defaultMap.getOrDefault(tmp, 0) + 1);
+        }
+        List<Integer> result = new ArrayList<>();
+        // 从第几位开始划分，代表执行几次滑动窗口
+        for (int i = 0; i < len; i++) {
+            int left = i;
+            int right = i;
+            // 有效字符串的数量
+            int count = 0;
+            // s字浮串的哈希表
+            Map<String, Integer> map = new HashMap<>();
+            while (right + len <= n) {
+                String putString = s.substring(right, right + len);
+                map.put(putString, map.getOrDefault(putString, 0) + 1);
+                // 当默认map中有这一部分子串时
+                if (defaultMap.containsKey(putString) && map.get(putString) <= defaultMap.get(putString)) {
+                    // 有效字符串
+                    count++;
+                }
+
+                if (right - left + 1 > words.length * len) {
+                    // 超出了要检查的字符串长度，left需要减小
+                    String popString = s.substring(left, left + len);
+                    map.put(popString, map.get(popString) - 1);
+                    if (defaultMap.containsKey(popString) && map.get(popString) < defaultMap.get(popString)) {
+                        count--;
+                    }
+                    // 减小的0需要key
+                    if (map.get(popString) == 0) {
+                        map.remove(popString);
+                    }
+                    left += len;
+                }
+                if (count == words.length) {
+                    // 有效字符串数量已经是需要的长度了
+                    result.add(left);
+                }
+                right += len;
+            }
+        }
+        return result;
     }
 
     public static List<Integer> findAnagrams(String s, String p) {
