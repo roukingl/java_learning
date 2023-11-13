@@ -7,10 +7,68 @@ import java.util.stream.Stream;
 class Solution {
 
     public static void main(String[] args) {
-        System.out.println(minWindow("ab", "b"));
+        System.out.println(minWindow("aa", "aa"));
     }
 
     public static String minWindow(String s, String t) {
+        int sLength = s.length();
+        int tLength = t.length();
+        if (tLength > sLength) {
+            return "";
+        }
+        int left = 0;
+        int right = 0;
+        // 默认的字符串哈希
+        int[] defaultMap = new int[127];
+        int defaultCount = 0;
+        for (char tmp : t.toCharArray()) {
+            if (defaultMap[tmp - 'A'] == 0) {
+                defaultCount++;
+            }
+            defaultMap[tmp - 'A']++;
+        }
+        // s字符串的哈希
+        int[] map = new int[127];
+        int startPoint = 0;
+        int minLength = Integer.MAX_VALUE;
+        char[] charArray = s.toCharArray();
+        // 有效字符的种类
+        int count = 0;
+
+        while (right < sLength) {
+            // 进窗口
+            int addChar = charArray[right] - 'A';
+            map[addChar]++;
+            // 进窗口之前需要检查当前增加的字符是不是有效了
+            if (map[addChar] == defaultMap[addChar]) {
+                // 加完相等才count++
+                count++;
+            }
+            while (count == defaultCount) {
+                // 相等，比较起点和长度，更新结果
+                if (minLength > right - left + 1) {
+                    minLength = right - left + 1;
+                    startPoint = left;
+                }
+                // 出窗口
+                int delChar = charArray[left] - 'A';
+                // 减之前相等才需要count-- ，说明减完之后不是有效字符种类了
+                if (map[delChar] == defaultMap[delChar]) {
+                    count--;
+                }
+                map[delChar]--;
+                left++;
+            }
+
+            right++;
+        }
+        if (minLength == Integer.MAX_VALUE) {
+            return "";
+        }
+        return s.substring(startPoint, startPoint + minLength);
+    }
+
+    public static String minWindow1(String s, String t) {
         int sLength = s.length();
         int tLength = t.length();
         if (tLength > sLength) {
