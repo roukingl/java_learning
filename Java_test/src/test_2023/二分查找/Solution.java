@@ -5,7 +5,42 @@ import java.util.Arrays;
 class Solution {
 
     public static void main(String[] args) {
-        System.out.println();
+        System.out.println(takeAttendance(new int[]{0, 1, 2, 3, 5}));
+    }
+    public static int takeAttendance(int[] records) {
+        int left = 0;
+        int right = 0;
+        int len = records.length;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (records[mid] == mid) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        // 判断 left 是不是在数组末尾
+        if (left == len - 1) {
+            return records[len - 1] + 1;
+        } else {
+            return left;
+        }
+    }
+
+    public static int takeAttendance1(int[] records) {
+        int result = 0;
+        int len = records.length;
+        int max = records[len - 1];
+        for (int record : records) {
+            result ^= max--;
+            result ^= record;
+        }
+        if (max == -1) {
+            return records[len - 1] + 1;
+        } else {
+            return result;
+        }
+
     }
 
     public static int searchInsert(int[] nums, int target) {
@@ -35,7 +70,7 @@ class Solution {
         if (len == 0) {
             return new int[] {-1, -1};
         }
-        int left = 0; 
+        int left = 0;
         int right = len - 1;
         // 求左端点
         while (left < right) {
@@ -61,7 +96,7 @@ class Solution {
             if (nums[mid] <= target) {
                 left = mid;
             } else {
-                right = mid - 1;    
+                right = mid - 1;
             }
         }
         if (nums[left] == target) {
