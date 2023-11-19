@@ -7,6 +7,7 @@ class Solution {
     public static void main(String[] args) {
         System.out.println(takeAttendance(new int[]{0, 1, 2, 3, 5}));
     }
+
     public static int takeAttendance(int[] records) {
         int left = 0;
         int right = 0;
