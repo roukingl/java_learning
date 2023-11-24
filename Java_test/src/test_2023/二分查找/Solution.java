@@ -5,7 +5,27 @@ import java.util.Arrays;
 class Solution {
 
     public static void main(String[] args) {
-        System.out.println(takeAttendance(new int[]{0, 1, 2, 3, 5}));
+        System.out.println(getSum(1, 2));
+    }
+
+    public static int getSum(int a, int b) {
+        while (b != 0) {
+            a = a ^ b;
+            b = ((a & b) << 1);
+        }
+        return a;
+    }
+
+    public boolean isUnique(String astr) {
+        int set = 0;
+        for (char tmp : astr.toCharArray()) {
+            if ((set & (1 << (tmp - 'a'))) == 0) {
+                set ^= (1 << (tmp - 'a'));
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static int takeAttendance(int[] records) {
