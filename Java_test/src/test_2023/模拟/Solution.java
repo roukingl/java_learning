@@ -18,7 +18,7 @@ class Solution {
         int left = -1;
         int index = 0;
         int right = n;
-        /**
+        /*
          [0, left] 0
          [left + 1, index - 1] 1
          [index, right - 1] 待扫描的元素
