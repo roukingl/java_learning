@@ -11,7 +11,6 @@ class Solution {
         sortColors(tmp);
         System.out.println(Arrays.toString(tmp));
     }
-
     
     public static void sortColors(int[] nums) {
         // 三指针
