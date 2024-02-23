@@ -38,7 +38,6 @@ class Solution {
         nums[index1] = nums[index2];
         nums[index2] = tmp;
     }
-
     public int minNumberOfFrogs(String croakOfFrogs) {
         Map<Character, Integer> defaultMap = new HashMap<>();
         defaultMap.put('c', 0);
