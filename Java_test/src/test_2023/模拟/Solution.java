@@ -32,6 +32,7 @@ class Solution {
         }
     }
 
+    
     private static void swap(int[] nums, int index1, int index2) {
         int tmp = nums[index1];
         nums[index1] = nums[index2];
