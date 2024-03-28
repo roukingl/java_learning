@@ -13,6 +13,7 @@ public class Solution {
         sort(nums, 0, nums.length - 1);
         return nums;
     }
+
     private void sort(int[] nums, int l, int r) {
         if (l >= r) {
             return;
